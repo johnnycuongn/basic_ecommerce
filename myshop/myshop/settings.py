@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure--un@8vr_t-mhfb#gc-4+uq3bd121r3@m067ghjtp+-+ng&z0f-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+  '0.0.0.0', 'localhost', '127.0.0.1'
+]
 
 
 # Application definition
@@ -39,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
-    'orders.apps.OrdersConfig'
+    'orders.apps.OrdersConfig',
+    'payments.apps.PaymentsConfig'
 ]
 
 MIDDLEWARE = [
@@ -80,7 +83,7 @@ WSGI_APPLICATION = 'myshop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'data' / 'db.sqlite3',
     }
 }
 
@@ -135,3 +138,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 CART_SESSION_ID = 'cart'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# Stripe settings
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51P3b3xKk63PJZYGaRdIkAyRxpXmFHqDhemqWPTQcpSoUOmKubH1ONFBHkpDVGfs46jWY82ukxGFVdcobmaA05D4y00dXfD7Tib' # Publishable key
+STRIPE_SECRET_KEY = 'sk_test_51P3b3xKk63PJZYGayNaSat9TpeP10kMH1GAfAV0GbFyZmrZa6pdydAvdtNDAXctAkGr7R6YhXy7JbsQ12BkmdrxK00QjOkNN3d'      # Secret key
+STRIPE_API_VERSION = '2024-04-10'
